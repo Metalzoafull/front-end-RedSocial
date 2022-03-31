@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- layout('layouts/main') %>
+
+    <%if (user) {%>
+        <h1 id="bienvenida">bienvenido <%= user.email %></h1>
+    <%} console.log(user)%>
+
+    <div class="row p-5 h-100" id="contentWrap">
+
+        <div class="col-md-8">
+          <div class="card"><!--bg-dark text-white rounded-0-->
+            <!-- CARD HEADER-->
+            <div class="card-header bg-primary text-white">
+              <h4>Let's Chat</h3>
+            </div>
+  
+            <!-- CARD BODY-->
+            <div id="chat" class="card-body chat"></div>
+  
+            <!-- CARD FOOTER -->
+            <form id="message-form" class="card-footer">
+              <div class="input-group">
+                <input type="text" id="message" class="form-control" />
+                  <button class="btn btn-warning rounded-0">
+                    <i class="fas fa-location-arrow"></i> Enviar
+                  </button>
+              </div>
+            </form>
+          </div>
+        </div>
+  
+        <!-- USERS SECTION-->
+        <div class="col-md-4">
+          <div class="card "><!--bg-dark text-white rounded-0-->
+            <div class="card-header bg-primary">
+              <h3>Usuarios</h3>
+            </div>
+            <div class="card-body">
+              <div id="usernames"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+</html>

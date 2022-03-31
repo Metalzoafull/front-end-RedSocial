@@ -5,8 +5,8 @@ const user = require('../service/userService');
 
 
 router.get('/', async (req, res, next) => {
-  const ususuario = await user.getEmail('lorna');
-  console.log(ususuario);
+  //const ususuario = await user.getEmail('lorna');
+  //console.log(ususuario);
   res.render('index');
   
 });
@@ -15,8 +15,9 @@ router.get('/signin', (req, res) => {
   res.render('signin');
 });
 
-router.get('/roberto', (req, res) => {
-  res.render('roberto');
+router.get('/home', (req, res) => {
+  //console.log(req);
+  res.render('home', {userName: req.user.emai});
 });
 
 router.get('/signup', (req, res) => {
@@ -24,7 +25,7 @@ router.get('/signup', (req, res) => {
 })
 
 router.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/roberto',
+  successRedirect: '/home',
   failureRedirect: '/signup',
   failureFlash: true
 }));
@@ -32,7 +33,7 @@ router.post('/signup', passport.authenticate('local-signup', {
 
 
 router.post('/signin', passport.authenticate('local-signin', {
-  successRedirect: '/roberto',
+  successRedirect: '/home',
   failureRedirect: '/signin',
   failureFlash: true
 }));
